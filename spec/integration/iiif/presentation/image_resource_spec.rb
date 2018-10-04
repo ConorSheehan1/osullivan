@@ -11,12 +11,12 @@ describe IIIF::Presentation::ImageResource do
     let(:image_server) { 'https://libimages.princeton.edu/loris' }
 
     let(:valid_service_id) {
-      id = 'pudl0001/4612422/00000001.jp2'
+      id = 'pudl0001%2F4612422%2F00000001.jp2'
       "#{image_server}/#{id}"
     }
 
     let(:invalid_service_id) {
-      id = 'xxxx/4612422/00000001.jp2'
+      id = 'xxxx%2F4612422%2F00000001.jp2'
       "#{image_server}/#{id}"
     }
 
@@ -32,19 +32,19 @@ describe IIIF::Presentation::ImageResource do
         resource = described_class.create_image_api_image_resource(opts)
         # expect(resource['@context']).to eq 'http://iiif.io/api/presentation/2/context.json'
         # @context is only added when we call to_json...
-        expect(resource['@id']).to eq 'https://libimages.princeton.edu/loris/pudl0001/4612422/00000001.jp2/full/!200,200/0/default.jpg'
+        expect(resource['@id']).to eq 'https://libimages.princeton.edu/loris/pudl0001%2F4612422%2F00000001.jp2/full/!200,200/0/default.jpg'
         expect(resource['@type']).to eq 'dctypes:Image'
         expect(resource.format).to eq "image/jpeg"
         expect(resource.width).to eq 3047
         expect(resource.height).to eq 7200
         expect(resource.service['@context']).to eq 'http://iiif.io/api/image/2/context.json'
-        expect(resource.service['@id']).to eq 'https://libimages.princeton.edu/loris/pudl0001/4612422/00000001.jp2'
+        expect(resource.service['@id']).to eq 'https://libimages.princeton.edu/loris/pudl0001%2F4612422%2F00000001.jp2'
         expect(resource.service['profile']).to eq 'http://iiif.io/api/image/2/level2.json'
       end
       it 'copies over all the info (when copy_info is true)' do
         opts = { service_id: valid_service_id, copy_info: true }
         resource = described_class.create_image_api_image_resource(opts)
-        expect(resource['@id']).to eq 'https://libimages.princeton.edu/loris/pudl0001/4612422/00000001.jp2/full/!200,200/0/default.jpg'
+        expect(resource['@id']).to eq 'https://libimages.princeton.edu/loris/pudl0001%2F4612422%2F00000001.jp2/full/!200,200/0/default.jpg'
         expect(resource['@type']).to eq 'dctypes:Image'
         expect(resource.format).to eq "image/jpeg"
         expect(resource.width).to eq 3047
@@ -80,8 +80,6 @@ describe IIIF::Presentation::ImageResource do
     describe 'respects the params we supply' do
       it ':resource_id' do
         r_id = 'http://example.edu/images/some.jpg' 
-        # 301 moved to
-        # r_id = 'https://libimages.princeton.edu/loris2/pudl0001/4612422/00000001.jp2/info.json'
 
         opts = { service_id: valid_service_id, resource_id: r_id}
         resource = described_class.create_image_api_image_resource(opts)
