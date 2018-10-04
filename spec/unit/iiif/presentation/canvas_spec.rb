@@ -42,5 +42,13 @@ describe IIIF::Presentation::Canvas do
     end
   end
 
+  describe '#as_json' do
+    # must have @id, width, height etc to pass validation in to_ordered_hash
+    # could also use to_oredered_hash(force: true) to skip validation
+    subject do
+      IIIF::Presentation::Canvas.new(fixed_values)
+    end
+    it_behaves_like 'it has symmetric as_json and to_json methods'
+  end
 end
 

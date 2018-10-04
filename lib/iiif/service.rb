@@ -91,7 +91,7 @@ module IIIF
     #  * pretty: (true|false). Should the JSON be pretty-printed? (default: false)
     #  * All options available in #to_ordered_hash
     def to_json(opts={})
-      hsh = self.as_json(opts)
+      hsh = self.to_ordered_hash(opts)
       if opts.fetch(:pretty, false)
         JSON.pretty_generate(hsh)
       else

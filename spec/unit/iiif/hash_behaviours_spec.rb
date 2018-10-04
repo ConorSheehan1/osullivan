@@ -565,10 +565,5 @@ describe IIIF::HashBehaviours do
     end
   end
 
-  # describe '#as_json' do
-  #   it 'should create json representation in the form of a ruby hash' do
-  #     expect(subject.as_json).to eq JSON.parse(subject.to_json)
-  #   end
-  # end
 end
 

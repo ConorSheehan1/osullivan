@@ -4,4 +4,5 @@ describe IIIF::Presentation::Annotation do
     it_behaves_like 'it has the appropriate methods for abstract_resource_only_keys'
   end
 
+  it_behaves_like 'it has symmetric as_json and to_json methods'
 end
