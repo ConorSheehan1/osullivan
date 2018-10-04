@@ -34,12 +34,7 @@ describe IIIF::Presentation::Layer do
     it_behaves_like 'it has the appropriate methods for any-type keys'
   end
 
-  describe "#{described_class}.as_json" do
-    subject do
-      IIIF::Presentation::Layer.new(fixed_values)
-    end
-    it_behaves_like 'it has symmetric as_json and to_json methods'
-  end
+  it_behaves_like 'it has symmetric as_json and to_json methods'
 
 end
 

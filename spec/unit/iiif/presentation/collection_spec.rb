@@ -49,9 +49,7 @@ describe IIIF::Presentation::Collection do
   describe '#validate' do
   end
 
-  describe '#as_json' do
-    it_behaves_like 'it has symmetric as_json and to_json methods'
-  end
+  it_behaves_like 'it has symmetric as_json and to_json methods'
 end
 
 
