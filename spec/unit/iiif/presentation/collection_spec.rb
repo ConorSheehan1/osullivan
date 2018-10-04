@@ -49,13 +49,7 @@ describe IIIF::Presentation::Collection do
   describe '#validate' do
   end
 
-  # TODO move to shared example
-  describe '#as_json' do
-    it 'should create json representation in the form of a ruby hash' do
-      expect(subject.as_json).to eq JSON.parse(subject.to_json)
-    end
-  end
-
+  it_behaves_like 'it has symmetric as_json and to_json methods'
 end
 
 

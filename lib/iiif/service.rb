@@ -99,10 +99,6 @@ module IIIF
       end
     end
 
-    def as_json(opts={})
-      self.to_ordered_hash(opts)
-    end
-
     # Options:
     #  * force: (true|false). Skips validations.
     #  * sort_json_ld_keys: (true|false). Brings all properties starting with
@@ -199,6 +195,9 @@ module IIIF
       export_hash.camelize_keys
       export_hash
     end
+
+    # alias_method has to be included after to_ordered_hash is defined
+    alias_method :as_json, :to_ordered_hash
 
     def self.from_ordered_hash(hsh, default_klass=IIIF::OrderedHash)
       # Create a new object (new_object)
