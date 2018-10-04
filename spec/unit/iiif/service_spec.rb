@@ -25,7 +25,8 @@ describe IIIF::Service do
     end
   end
 
-  
-  it_behaves_like 'it has symmetric as_json and to_json methods'
+  describe '#as_json' do
+    it_behaves_like 'it has symmetric as_json and to_json methods'
+  end
 
 end

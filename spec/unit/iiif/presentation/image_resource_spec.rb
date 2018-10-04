@@ -10,4 +10,23 @@ describe IIIF::Presentation::ImageResource do
     it_behaves_like 'it has the appropriate methods for integer-only keys'
   end
 
+  let(:fixed_values) do
+    {
+      "@context" => "http://iiif.io/api/presentation/2/context.json",
+      "@id" => "http://www.example.org/iiif/image",
+      "label" => "p. 1",
+      "height" => 1000,
+      "width" => 750,
+    }
+  end
+
+  # describe '#as_json' do
+  #   # must have @id, width, height etc to pass validation in to_ordered_hash
+  #   # could also use to_oredered_hash(force: true) to skip validation
+  #   subject do
+  #     IIIF::Presentation::Canvas.new(fixed_values)
+  #   end
+  #   it_behaves_like 'it has symmetric as_json and to_json methods'
+  # end
+  it_behaves_like 'it has symmetric as_json and to_json methods'
 end
